@@ -1,7 +1,11 @@
 package com.umitytsr.weatherapp.api
 
-import com.umitytsr.weatherapp.constants.Const
-import com.umitytsr.weatherapp.data.WeatherResponse
+import android.os.Environment
+import com.umitytsr.weatherapp.util.Const
+import com.umitytsr.weatherapp.network.WeatherResponse
+import okhttp3.Cache
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -23,9 +27,21 @@ interface WeatherApiService {
 
     companion object{
         fun create(): WeatherApiService{
+            val httpLoggingInterceptor = HttpLoggingInterceptor()
+                .setLevel(HttpLoggingInterceptor.Level.BODY)
+
+            val cacheSize =(5 * 1024 * 1024).toLong()
+            val myCache = Cache(Environment.getDataDirectory(),cacheSize)
+
+            val okHttpClient = OkHttpClient.Builder()
+                .addInterceptor(httpLoggingInterceptor)
+                .cache(myCache)
+                .build()
+
             val retrofit = Retrofit.Builder()
                 .baseUrl(Const.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
                 .build()
 
             return retrofit.create(WeatherApiService::class.java)

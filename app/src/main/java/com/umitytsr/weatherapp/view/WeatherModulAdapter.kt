@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.umitytsr.weatherapp.R
-import com.umitytsr.weatherapp.constants.Const
-import com.umitytsr.weatherapp.data.WeatherResponse
+import com.umitytsr.weatherapp.util.Const
+import com.umitytsr.weatherapp.network.WeatherResponse
 import com.umitytsr.weatherapp.databinding.ItemRowBinding
 import com.umitytsr.weatherapp.databinding.ItemRowTodayBinding
 

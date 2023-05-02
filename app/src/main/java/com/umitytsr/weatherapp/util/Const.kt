@@ -1,4 +1,4 @@
-package com.umitytsr.weatherapp.constants
+package com.umitytsr.weatherapp.util
 
 object Const {
     const val BASE_URL="https://api.open-meteo.com/"

@@ -1,4 +1,4 @@
-package com.umitytsr.weatherapp.data
+package com.umitytsr.weatherapp.network
 
 
 import com.google.gson.annotations.SerializedName
