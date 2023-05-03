@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
 
     fun initObserver(){
         viewModel.weatherData.observe(viewLifecycleOwner){
-            initRecyclerView(it)
+            initRecyclerView(it!!)
         }
     }
 

@@ -9,7 +9,7 @@ data class DailyUnits(
     @SerializedName("temperature_2m_min")
     val temperature2mMin: String,
     @SerializedName("time")
-    val time: String,
+    val time3: String,
     @SerializedName("weathercode")
     val weathercode: String
 )

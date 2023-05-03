@@ -17,8 +17,8 @@ class HomeFragmentViewModel(app : Application): AndroidViewModel(app) {
     private val weatherApiService = WeatherApiService.create()
     private val weatherDb = WeatherDB.getInstance(app.applicationContext)
 
-    private val _weatherData = MutableLiveData<WeatherResponse>()
-    val weatherData: LiveData<WeatherResponse> = _weatherData
+    private val _weatherData = MutableLiveData<WeatherResponse?>()
+    val weatherData: LiveData<WeatherResponse?> = _weatherData
 
     fun getWeatherCall(){
         weatherApiService.getProperties().enqueue(object: Callback<WeatherResponse>{
@@ -28,7 +28,7 @@ class HomeFragmentViewModel(app : Application): AndroidViewModel(app) {
             ) {
                 if (weatherResponse.isSuccessful) {
                     val response = weatherResponse.body()
-                    _weatherData.value = response!! 
+                    _weatherData.value = response
                     Thread(Runnable {
                         weatherDb.weatherDao().deleteAll()
                         response?.let { weatherDb.weatherDao().insert(it) }

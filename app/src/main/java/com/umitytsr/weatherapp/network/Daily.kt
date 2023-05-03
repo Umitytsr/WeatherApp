@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "daily_table")
 data class Daily(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 1,
+    val id3: Int = 1,
     @SerializedName("temperature_2m_max")
     val temperature2mMax: List<Double>,
     @SerializedName("temperature_2m_min")
